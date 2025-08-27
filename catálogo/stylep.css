@@ -1,0 +1,33 @@
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #FFA8C0, #FF764F);
+}
+
+.top-bar .left,
+.top-bar .right {
+    display: 1;
+    align-items: center;
+}
+
+.top-bar .logo {
+    flex: 1;             /* ocupa todo el espacio entre izquierda y derecha */
+    text-align: center;   /* centra el logo */
+}
+
+.top-bar .logo-central img {
+    height: 40px; /* ajusta al tamaño que quieras */
+    width: auto;  /* para mantener proporción */
+}
+
+.top-bar button {
+    padding: 8px 12px;   /* mantiene forma del botón */
+    border: none;
+    border-radius: 5px;
+    background: #ff689b;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
