@@ -1,65 +1,86 @@
+/* HEADER / TOP BAR */
 .top-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
     background: linear-gradient(90deg, #FFA8C0, #FF764F);
-}
-
-.top-bar .left,
-.top-bar .right {
-    display: 1;
-    align-items: center;
-}
-
-.top-bar .logo {
-    flex: 1;             /* ocupa todo el espacio entre izquierda y derecha */
-    text-align: center;   /* centra el logo */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .top-bar .logo-central img {
-    height: 40px; /* ajusta al tamaño que quieras */
-    width: auto;  /* para mantener proporción */
+    max-height: 40px;
+    width: auto;
 }
 
-.top-bar button {
-    padding: 8px 12px;   /* mantiene forma del botón */
-    border: none;
-    border-radius: 5px;
-    background: #ff689b;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-/* GALERÍA RESPONSIVE */
+/* GALERÍA */
 .galeria-container {
     display: flex;
-    gap: 20px;
-    flex-wrap: wrap; /* para que en móvil las miniaturas se muevan debajo */
+    gap: 15px;
     justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap; /* miniaturas siempre a la izquierda */
 }
 
 .miniaturas {
-    flex-direction: row; /* cambia a horizontal en móvil */
+    display: flex;
+    flex-direction: column; /* columna a la izquierda */
+    gap: 10px;
 }
 
 .miniaturas img {
     width: 50px;
     height: 50px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 5px;
+}
+
+.miniaturas img.active {
+    border-color: #ff689b;
 }
 
 .imagen-grande {
-    width: 100%;
-    max-width: 400px;  /* nunca mayor a 400px */
-    height: auto;      /* se ajusta automáticamente */
+    width: 70%;           /* ocupa la mayor parte del contenedor */
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .imagen-grande img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
+    transition: transform 0.2s ease;
 }
+
+/* INFO PRODUCTO */
+.info-producto {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn-consultar {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #ff689b;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-consultar:hover {
+    background: #ff689b;
+}
+
+/* RESPONSIVE */
 @media (max-width: 600px) {
     .producto-container {
         flex-direction: column;
@@ -68,17 +89,17 @@
     }
 
     .galeria-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .miniaturas {
-        flex-direction: row; /* miniaturas en fila */
-        justify-content: center;
+        width: 100%;
         gap: 10px;
     }
 
+    .miniaturas {
+        max-height: 150px; /* ajusta tamaño de miniaturas */
+        gap: 5px;
+    }
+
     .imagen-grande {
-        max-width: 90%;
+        width: calc(100% - 60px); /* deja espacio para miniaturas a la izquierda */
+        max-width: 300px;
     }
 }
