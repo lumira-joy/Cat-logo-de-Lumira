@@ -114,30 +114,42 @@ miniaturas.forEach(img => {
     });
 });
 
-// Zoom tipo lupa
-zoomContainer.addEventListener('mousemove', (e) => {
-    if(!zoomActivo) return;
-    const rect = zoomContainer.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const xPercent = x / rect.width * 100;
-    const yPercent = y / rect.height * 100;
-    imagenPrincipal.style.transformOrigin = `${xPercent}% ${yPercent}%`;
-});
+// ---------------------------
+// NUEVO BLOQUE: Zoom solo en PC
+// ---------------------------
+const esMovil = window.innerWidth <= 600;
 
-zoomContainer.addEventListener('mouseenter', () => {
-    imagenPrincipal.style.transform = 'scale(2)';
-    zoomActivo = true;
-    zoomContainer.style.cursor = 'zoom-out';
-});
+if (!esMovil) {
+    // Zoom tipo lupa solo en PC
+    zoomContainer.addEventListener('mousemove', (e) => {
+        if (!zoomActivo) return;
+        const rect = zoomContainer.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const xPercent = x / rect.width * 100;
+        const yPercent = y / rect.height * 100;
+        imagenPrincipal.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+    });
 
-zoomContainer.addEventListener('mouseleave', () => {
-    imagenPrincipal.style.transform = 'scale(1)';
-    zoomActivo = false;
-    zoomContainer.style.cursor = 'zoom-in';
-});
+    zoomContainer.addEventListener('mouseenter', () => {
+        imagenPrincipal.style.transform = 'scale(2)';
+        zoomActivo = true;
+        zoomContainer.style.cursor = 'zoom-out';
+    });
+
+    zoomContainer.addEventListener('mouseleave', () => {
+        imagenPrincipal.style.transform = 'scale(1)';
+        zoomActivo = false;
+        zoomContainer.style.cursor = 'zoom-in';
+    });
+} else {
+    // En móviles quitamos zoom
+    imagenPrincipal.style.cursor = 'default';
+}
 </script>
+
 
 </body>
 </html>
+
 
