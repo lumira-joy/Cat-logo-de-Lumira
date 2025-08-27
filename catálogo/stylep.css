@@ -119,25 +119,28 @@
 
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 600px) {
-    /* Imagen arriba, miniaturas debajo en fila */
     .galeria-container {
-        flex-direction: column; /* todo en columna */
+        flex-direction: column; /* imagen arriba, miniaturas abajo */
         align-items: center;
         gap: 10px;
     }
 
+    .imagen-grande {
+        order: 1; /* primero la imagen grande */
+        width: 90%;
+        max-width: 300px;
+    }
+
     .miniaturas {
-        flex-direction: row;   /* miniaturas en fila horizontal */
+        order: 2; /* luego las miniaturas */
+        flex-direction: row; /* miniaturas en fila horizontal */
         justify-content: center;
         gap: 8px;
         margin-top: 10px;
         max-width: 90%;
         flex-wrap: nowrap; /* no se apilan */
     }
-
-    .imagen-grande {
-        width: 90%;      /* se ajusta al ancho del móvil */
-        max-width: 300px;
-    }
 }
+
+
 
