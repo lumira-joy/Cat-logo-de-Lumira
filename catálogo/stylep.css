@@ -1,4 +1,4 @@
-/* HEADER / TOP BAR */
+/* ==================== HEADER / TOP BAR ==================== */
 .top-bar {
     display: flex;
     align-items: center;
@@ -7,25 +7,43 @@
     background: linear-gradient(90deg, #FFA8C0, #FF764F);
     width: 100%;
     box-sizing: border-box;
+    flex-wrap: wrap; /* permite elementos en varias líneas en móvil */
+    gap: 10px;
+}
+
+.top-bar .left,
+.top-bar .right {
+    display: flex;
+    align-items: center;
 }
 
 .top-bar .logo-central img {
-    max-height: 40px;
+    max-height: 40px; /* mantiene proporción */
     width: auto;
 }
 
-/* GALERÍA */
+.top-bar button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background: #ff689b;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ==================== GALERÍA ==================== */
 .galeria-container {
     display: flex;
     gap: 15px;
     justify-content: center;
     align-items: flex-start;
-    flex-wrap: nowrap; /* miniaturas siempre a la izquierda */
+    flex-wrap: nowrap; /* PC: miniaturas siempre a la izquierda */
 }
 
 .miniaturas {
     display: flex;
-    flex-direction: column; /* columna a la izquierda */
+    flex-direction: column; /* PC: columna a la izquierda */
     gap: 10px;
 }
 
@@ -57,12 +75,21 @@
     transition: transform 0.2s ease;
 }
 
-/* INFO PRODUCTO */
+/* ==================== INFO PRODUCTO ==================== */
 .info-producto {
     max-width: 300px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+.info-producto h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.info-producto p {
+    margin: 0;
 }
 
 .btn-consultar {
@@ -80,26 +107,43 @@
     background: #ff689b;
 }
 
-/* RESPONSIVE */
+/* ==================== ICONOS REDES ==================== */
+.redes a img {
+    width: 30px;
+    transition: transform 0.2s;
+}
+
+.redes a img:hover {
+    transform: scale(1.2);
+}
+
+/* ==================== RESPONSIVE ==================== */
 @media (max-width: 600px) {
-    .producto-container {
+    /* Galería: imagen arriba, miniaturas debajo en fila */
+    .galeria-container {
         flex-direction: column;
         align-items: center;
-        gap: 15px;
-    }
-
-    .galeria-container {
-        width: 100%;
         gap: 10px;
     }
 
     .miniaturas {
-        max-height: 150px; /* ajusta tamaño de miniaturas */
+        flex-direction: row;
+        justify-content: center;
         gap: 5px;
+        margin-top: 10px;
+        max-width: 90%;
+        flex-wrap: wrap;
     }
 
     .imagen-grande {
-        width: calc(100% - 60px); /* deja espacio para miniaturas a la izquierda */
+        width: 90%;
         max-width: 300px;
+    }
+
+    /* Botón volver al catálogo más chico y ajustado */
+    .top-bar .left button {
+        padding: 6px 10px;
+        font-size: 14px;
+        white-space: nowrap;
     }
 }
