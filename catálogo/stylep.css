@@ -120,27 +120,33 @@
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 600px) {
     .galeria-container {
-        flex-direction: column; /* imagen arriba, miniaturas abajo */
+        flex-direction: column; /* imagen arriba, miniaturas debajo */
         align-items: center;
         gap: 10px;
     }
 
     .imagen-grande {
-        order: 1; /* primero la imagen grande */
+        order: 1; /* imagen primero */
         width: 90%;
         max-width: 300px;
     }
 
     .miniaturas {
-        order: 2; /* luego las miniaturas */
-        flex-direction: row; /* miniaturas en fila horizontal */
+        order: 2; /* miniaturas después */
+        flex-direction: row !important; /* forzar fila horizontal */
         justify-content: center;
         gap: 8px;
         margin-top: 10px;
         max-width: 90%;
-        flex-wrap: nowrap; /* no se apilan */
+        flex-wrap: nowrap !important; /* no se apilan */
+    }
+
+    .miniaturas img {
+        width: 50px;
+        height: 50px;
     }
 }
+
 
 
 
